@@ -1543,7 +1543,7 @@
     </div>
     <div class="ftbot">
       <span class="ftcopy">© 2025 Giuseppina Mezzelani – Unabhängige LR LIFETAKT Partnerin</span>
-      <div class="ftleg"><button onclick="openModal('impressum')" class="ftleg-btn">Impressum</button><button onclick="openModal('datenschutz')" class="ftleg-btn">Datenschutz</button></div>
+      <div class="ftleg"><button id="btn-impressum" class="ftleg-btn">Impressum</button><button id="btn-datenschutz" class="ftleg-btn">Datenschutz</button></div>
     </div>
     <div class="ftdisc">Diese Website ist ein privates Angebot von Giuseppina Mezzelani als unabhängiger LR HEALTH & BEAUTY Partnerin und kein offizielles Angebot der LR Health & Beauty Systems GmbH. Die vorgestellten Produkte sind Nahrungsergänzungsmittel und ersetzen keine medizinische Beratung oder Behandlung. Keine Heilversprechen. Bestellungen erfolgen ausschließlich über den offiziellen LR-Shop. Diese Website enthält Partnerlinks – bei einem Kauf über meinen Link erhalte ich eine Provision, ohne dass dir dadurch Mehrkosten entstehen.</div>
   </div>
@@ -2268,9 +2268,9 @@
 </script>
 
 <!-- IMPRESSUM MODAL -->
-<div class="lmodal-bg" id="modal-impressum" onclick="if(event.target===this)closeModal()">
+<div class="lmodal-bg" id="modal-impressum">
   <div class="lmodal">
-    <button class="lmodal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <button class="lmodal-close" id="close-impressum" aria-label="Schließen">✕</button>
     <h1>Impressum</h1>
     <span class="orn"></span>
     <h2>Angaben gemäß § 5 TMG</h2>
@@ -2289,9 +2289,9 @@
 </div>
 
 <!-- DATENSCHUTZ MODAL -->
-<div class="lmodal-bg" id="modal-datenschutz" onclick="if(event.target===this)closeModal()">
+<div class="lmodal-bg" id="modal-datenschutz">
   <div class="lmodal">
-    <button class="lmodal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <button class="lmodal-close" id="close-datenschutz" aria-label="Schließen">✕</button>
     <h1>Datenschutzerklärung</h1>
     <span class="orn"></span>
     <p class="updated">Stand: April 2026</p>
@@ -2314,15 +2314,23 @@
 </div>
 
 <script>
-  function openModal(id){
-    document.getElementById('modal-'+id).classList.add('open');
-    document.body.style.overflow='hidden';
-  }
-  function closeModal(){
-    document.querySelectorAll('.lmodal-bg').forEach(m=>m.classList.remove('open'));
-    document.body.style.overflow='';
-  }
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  (function(){
+    function showModal(id){
+      var m=document.getElementById('modal-'+id);
+      if(m){m.classList.add('open');document.body.style.overflow='hidden';}
+    }
+    function hideModals(){
+      document.querySelectorAll('.lmodal-bg').forEach(function(m){m.classList.remove('open');});
+      document.body.style.overflow='';
+    }
+    document.getElementById('btn-impressum').addEventListener('click',function(){showModal('impressum');});
+    document.getElementById('btn-datenschutz').addEventListener('click',function(){showModal('datenschutz');});
+    document.getElementById('close-impressum').addEventListener('click',hideModals);
+    document.getElementById('close-datenschutz').addEventListener('click',hideModals);
+    document.getElementById('modal-impressum').addEventListener('click',function(e){if(e.target===this)hideModals();});
+    document.getElementById('modal-datenschutz').addEventListener('click',function(e){if(e.target===this)hideModals();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')hideModals();});
+  })();
 </script>
 </body>
 </html>
