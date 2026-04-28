@@ -560,6 +560,33 @@
   .lpage-hint{background:var(--gp);border:1px solid var(--gm);border-radius:14px;padding:18px 22px;margin-top:36px;font-size:.87rem;color:var(--g2);line-height:1.7}
   .lpage-updated{font-size:.8rem;color:var(--muted);margin-bottom:0}
   @media(max-width:600px){.lpage-body{padding:40px 20px 80px}}
+
+  /* ═══ ARTIKELSUCHE ═══ */
+  .as-wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px}
+  .as-wrap h1{font-family:var(--ff);font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:8px}
+  .as-orn{display:block;width:48px;height:2.5px;background:var(--g1);border-radius:2px;margin:14px 0 10px}
+  .as-desc{color:var(--grey);font-size:.95rem;font-weight:300;margin-bottom:32px;line-height:1.8}
+  .as-search-box{position:relative;margin-bottom:12px}
+  .as-search-box input{width:100%;padding:16px 20px 16px 52px;border:1.5px solid var(--sand2);border-radius:14px;font-family:var(--fb);font-size:1rem;background:var(--white);color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s}
+  .as-search-box input:focus{border-color:var(--g1);box-shadow:0 0 0 3px rgba(201,137,106,.12)}
+  .as-search-box .as-ico{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem;pointer-events:none}
+  .as-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .as-filter{padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:600;border:1.5px solid var(--sand2);background:var(--white);color:var(--grey);cursor:pointer;transition:all .2s;font-family:var(--fb)}
+  .as-filter.on,.as-filter:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+  .as-results{display:flex;flex-direction:column;gap:10px}
+  .as-card{background:var(--white);border:1.5px solid var(--sand2);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:border-color .2s,box-shadow .2s}
+  .as-card:hover{border-color:var(--gm);box-shadow:0 4px 16px rgba(201,137,106,.1)}
+  .as-card-left{flex:1;min-width:0}
+  .as-card-cat{font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--g2);margin-bottom:4px}
+  .as-card-name{font-family:var(--ff);font-size:1.15rem;color:var(--dark);font-weight:400}
+  .as-card-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .as-art{font-size:.9rem;font-weight:700;color:var(--dark);background:var(--sand);border-radius:8px;padding:6px 12px;letter-spacing:.5px}
+  .as-copy{display:flex;align-items:center;gap:6px;background:var(--g1);color:#fff;border:none;border-radius:100px;padding:8px 16px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .2s;white-space:nowrap}
+  .as-copy:hover{background:var(--g2);transform:translateY(-1px)}
+  .as-copy.done{background:#25D366}
+  .as-empty{text-align:center;padding:48px 0;color:var(--muted);font-size:.95rem}
+  .as-hint{background:var(--gp);border:1px solid var(--gm);border-radius:12px;padding:14px 18px;font-size:.84rem;color:var(--g2);line-height:1.7;margin-bottom:24px}
+  @media(max-width:600px){.as-wrap{padding:40px 16px 80px}.as-card{flex-direction:column;align-items:flex-start}.as-card-right{width:100%}.as-copy{flex:1;justify-content:center}}
 </style>
 </head>
 <body>
@@ -1547,7 +1574,7 @@
     </div>
     <div class="ftbot">
       <span class="ftcopy">© 2026 Giuseppina Mezzelani – Unabhängige LR LIFETAKT Partnerin</span>
-      <div class="ftleg"><button id="btn-impressum" class="ftleg-btn">Impressum</button><button id="btn-datenschutz" class="ftleg-btn">Datenschutz</button></div>
+      <div class="ftleg"><button id="btn-artikelsuche" class="ftleg-btn">🔍 Artikelnummer suchen</button><button id="btn-impressum" class="ftleg-btn">Impressum</button><button id="btn-datenschutz" class="ftleg-btn">Datenschutz</button></div>
     </div>
     <div class="ftdisc">Diese Website ist ein privates Angebot von Giuseppina Mezzelani als unabhängiger LR HEALTH & BEAUTY Partnerin und kein offizielles Angebot der LR Health & Beauty Systems GmbH. Die vorgestellten Produkte sind Nahrungsergänzungsmittel und ersetzen keine medizinische Beratung oder Behandlung. Keine Heilversprechen. Bestellungen erfolgen ausschließlich über den offiziellen LR-Shop. Diese Website enthält Partnerlinks – bei einem Kauf über meinen Link erhalte ich eine Provision, ohne dass dir dadurch Mehrkosten entstehen.</div>
   </div>
@@ -2342,8 +2369,138 @@
     document.getElementById('btn-datenschutz').addEventListener('click',function(e){e.stopPropagation();showPage('datenschutz');});
     document.getElementById('back-impressum').addEventListener('click',function(){hidePage('impressum');});
     document.getElementById('back-datenschutz').addEventListener('click',function(){hidePage('datenschutz');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){hidePage('impressum');hidePage('datenschutz');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){hidePage('impressum');hidePage('datenschutz');hidePage('artikelsuche');}});
   })();
+</script>
+
+<!-- ARTIKELSUCHE SEITE -->
+<div class="lpage" id="lpage-artikelsuche">
+  <header class="lpage-hdr">
+    <nav class="lpage-nav">
+      <div class="lpage-logo">Giuseppina <span>Mezzelani</span></div>
+      <button class="lpage-back" id="back-artikelsuche">← Zurück zur Website</button>
+    </nav>
+  </header>
+  <div class="as-wrap">
+    <h1>Artikelnummer suchen</h1>
+    <span class="as-orn"></span>
+    <p class="as-desc">Finde die Artikelnummer für dein LR-Produkt — einfach kopieren und in die Registrierung eintragen.</p>
+    <div class="as-hint">💡 Tipp: Produktname eintippen, Nummer kopieren, direkt in das LR-Formular einfügen.</div>
+    <div class="as-search-box">
+      <span class="as-ico">🔍</span>
+      <input type="text" id="as-input" placeholder="Produktname eingeben, z.B. Aloe Vera..." autocomplete="off">
+    </div>
+    <div class="as-filters" id="as-filters"></div>
+    <div class="as-results" id="as-results"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ── PRODUKTDATENBANK ──────────────────────────────────────────
+  // Artikelnummern bitte aus dem LR-Shop eintragen!
+  // shop.lrworld.com → Produkt suchen → Artikelnummer kopieren
+  var products = [
+    // ALOE VERA
+    {name:'Aloe Vera Drinking Gel Traditional Honey', cat:'Aloe Vera', art:'40010'},
+    {name:'Aloe Vera Drinking Gel Peach', cat:'Aloe Vera', art:'40080'},
+    {name:'Aloe Vera Immune Plus', cat:'Aloe Vera', art:''},
+    // NAHRUNGSERGÄNZUNG
+    {name:'Pro Balance', cat:'Nahrungsergänzung', art:''},
+    {name:'Fiber Boost', cat:'Nahrungsergänzung', art:''},
+    {name:'Pro 12+', cat:'Nahrungsergänzung', art:''},
+    {name:'Pro Balance + Pro 12+ Kombi', cat:'Nahrungsergänzung', art:''},
+    {name:'Active Freedom Kapseln', cat:'Nahrungsergänzung', art:''},
+    // ENERGIE
+    {name:'Mind Master Formula Gold', cat:'Energie & Fokus', art:''},
+    {name:'Mind Master Extreme', cat:'Energie & Fokus', art:''},
+    {name:'Night Master', cat:'Energie & Fokus', art:''},
+    // BEAUTY
+    {name:'5in1 Beauty Elixir', cat:'Beauty', art:''},
+    {name:'Woman Phyto', cat:'Beauty', art:''},
+    {name:'5in1 Men\'s Shot', cat:'Beauty', art:''},
+    // BODY MISSION
+    {name:'FiguActive Shakes', cat:'Body Mission', art:''},
+    {name:'FiguActive Suppen', cat:'Body Mission', art:''},
+    {name:'FiguActive Riegel', cat:'Body Mission', art:''},
+  ];
+
+  var input = document.getElementById('as-input');
+  var resultsEl = document.getElementById('as-results');
+  var filtersEl = document.getElementById('as-filters');
+  var activeFilter = 'Alle';
+
+  // Kategorien ermitteln
+  var cats = ['Alle'].concat([...new Set(products.map(function(p){return p.cat;}))]);
+  cats.forEach(function(cat){
+    var btn = document.createElement('button');
+    btn.className = 'as-filter' + (cat==='Alle'?' on':'');
+    btn.textContent = cat;
+    btn.addEventListener('click', function(){
+      activeFilter = cat;
+      document.querySelectorAll('.as-filter').forEach(function(b){b.classList.remove('on');});
+      btn.classList.add('on');
+      render();
+    });
+    filtersEl.appendChild(btn);
+  });
+
+  function render(){
+    var q = input.value.trim().toLowerCase();
+    var filtered = products.filter(function(p){
+      var matchCat = activeFilter==='Alle' || p.cat===activeFilter;
+      var matchQ = !q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+    if(!filtered.length){
+      resultsEl.innerHTML = '<div class="as-empty">Kein Produkt gefunden. Suchbegriff anpassen?</div>';
+      return;
+    }
+    resultsEl.innerHTML = filtered.map(function(p){
+      var artDisplay = p.art ? p.art : '—';
+      var copyBtn = p.art
+        ? '<button class="as-copy" data-art="'+p.art+'">📋 Kopieren</button>'
+        : '<button class="as-copy" style="background:var(--sand);color:var(--grey);cursor:default">Bald verfügbar</button>';
+      return '<div class="as-card">'
+        +'<div class="as-card-left">'
+        +'<div class="as-card-cat">'+p.cat+'</div>'
+        +'<div class="as-card-name">'+p.name+'</div>'
+        +'</div>'
+        +'<div class="as-card-right">'
+        +(p.art ? '<div class="as-art">Nr. '+p.art+'</div>' : '')
+        +copyBtn
+        +'</div>'
+        +'</div>';
+    }).join('');
+
+    // Copy-Buttons
+    resultsEl.querySelectorAll('.as-copy[data-art]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        navigator.clipboard.writeText(btn.dataset.art).then(function(){
+          btn.textContent = '✓ Kopiert!';
+          btn.classList.add('done');
+          setTimeout(function(){btn.textContent='📋 Kopieren';btn.classList.remove('done');}, 2000);
+        });
+      });
+    });
+  }
+
+  input.addEventListener('input', render);
+  render();
+
+  // Navigation
+  document.getElementById('btn-artikelsuche').addEventListener('click', function(e){
+    e.stopPropagation();
+    document.getElementById('lpage-artikelsuche').classList.add('open');
+    document.body.style.overflow='hidden';
+    window.scrollTo(0,0);
+    setTimeout(function(){input.focus();}, 100);
+  });
+  document.getElementById('back-artikelsuche').addEventListener('click', function(){
+    document.getElementById('lpage-artikelsuche').classList.remove('open');
+    document.body.style.overflow='';
+  });
+})();
 </script>
 </body>
 </html>
