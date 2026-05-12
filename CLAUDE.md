@@ -1,129 +1,77 @@
-# CLAUDE.md — Giuseppina Mezzelani Website
+# Giuseppina Mezzelani – LR LIFETAKT Website
 
-Lies diese Datei zu Beginn jeder Session vollständig durch, bevor du arbeitest.
-
----
-
-## Projekt-Überblick
-
-**Website für:** Giuseppina Mezzelani  
-**Domain:** (bei Hostinger — Domain hier eintragen, z.B. giuseppina-mezzelani.de)  
-**Zweck:** Persönliche Berater-Website für LR LIFETAKT Produkte  
-**Zielgruppe:** Frauen 25–55, gesundheitsbewusst, interessiert an natürlichen Produkten, Wellness und Schönheit  
-**Sprache:** Deutsch  
+## Projektübersicht
+Persönliche Beraterinnen-Website für Giuseppina Mezzelani, LR LIFETAKT Partnerin.
+Live unter: https://giuseppina-m.de
+GitHub Repo: https://github.com/Sajebeats/giuseppina-website
+Hosting: GitHub Pages (Branch: main)
+Kontakt: josy@giuseppina-m.de | WhatsApp: +4915231717671
 
 ---
 
-## Was Giuseppina macht
+## Ordnerstruktur
 
-LR LIFETAKT Beraterin — sie berät persönlich und kostenlos zu:
-- **Aloe Vera** Produkten (Trinken, Körperpflege)
-- **Nahrungsergänzung** (Vitamine, Mineralstoffe)
-- **Beauty von innen** (Kollagen, Hautpflege)
-- **Body Mission** (Abnehmen, Wohlbefinden)
-
-Wichtig: Sie ist **keine Ärztin**, macht **keine Heilversprechen** — alles ist ehrliche, persönliche Empfehlung.  
-Kontakt läuft hauptsächlich über **WhatsApp**.
+```
+giuseppina-website/          ← EINZIGER Arbeitsordner
+├── index.html               ← Die gesamte Website (HTML + CSS + JS)
+├── CNAME                    ← Domain: giuseppina-m.de
+├── impressum.html           ← Standalone Impressum (Fallback)
+├── datenschutz.html         ← Standalone Datenschutz (Fallback)
+├── images/
+│   ├── hero.jpg             ← Hero Portrait (optimiert, 161KB)
+│   ├── about.jpg            ← Über-mich Portrait (138KB)
+│   ├── work.jpg             ← Laptop-Bild (140KB)
+│   ├── cta.jpg              ← Kontakt/CTA Lifestyle (255KB)
+│   └── original/            ← Originale PNGs (nicht in Git)
+├── pdfs/                    ← LR Kataloge (nicht in Git, zu groß)
+├── docs/                    ← Konzept-Dokumente (nicht in Git)
+└── .claude/launch.json      ← Vorschau-Server (Port 3456)
+```
 
 ---
 
-## Design-System
+## Design System
 
 ### Farben
-```
---g1: #C9896A   (Hauptfarbe, warmes Terrakotta)
---g2: #B8705A   (Dunkleres Terrakotta, Links & Akzente)
---g3: #9A5A44   (Tiefes Terrakotta)
---gp: #F2DDD2   (Helles Rosa, Badges & Highlights)
---gm: #E8C4B0   (Mittleres Rosa, Borders)
---gl: #F5EDE3   (Sehr helles Sand, Backgrounds)
---cream: #FDFAF7 (Seiten-Hintergrund)
---dark: #2C2C2C  (Texte)
-```
+- --g1: #C9896A  (Terracotta Haupt)
+- --g2: #B8705A  (Terracotta Dunkel)
+- --gp: #F2DDD2  (Pfirsich Hell)
+- --cream: #FDFAF7
+- --sand: #F5EDE3
+- --dark: #1E1A17
 
 ### Schriften
-- **Headlines:** Cormorant Garamond (serif, elegant, leicht)
-- **Body/UI:** DM Sans (sans-serif, modern, lesbar)
+- Headlines: Cormorant Garamond (weight 300/400/500)
+- Body: DM Sans (weight 300/400/500)
 
-### Design-Prinzipien
-- Feminin, warm, hochwertig — wie ein Premium Beauty-Brand
-- Viel Weißraum, sanfte Schatten, abgerundete Ecken (14px)
-- Animationen: subtil, `transition: all .28s`
-- Mobile-first — alle Breakpoints bei max-width: 768px
-
----
-
-## Datei-Struktur
-
-```
-giuseppina-website/
-├── index.html          ← Haupt-HTML (alles in einer Datei — kein Framework)
-├── images/             ← Alle Fotos (JPG/PNG)
-├── pdfs/               ← LR Produktkatalog PDFs
-├── CLAUDE.md           ← Diese Datei
-└── .gitignore
-```
-
-### Warum alles in index.html?
-Einfachstes Deployment: eine Datei ändern, pushen, live. Kein Build-Prozess, kein Node.js, keine Abhängigkeiten.
-
----
-
-## Sections auf der Website
-
-1. **Header/Nav** — fixiert, mit Logo, Navigation, WhatsApp-Button
-2. **Hero** — großes Bild, Headline, Trust-Zahlen
-3. **Trust-Band** — dunkler Streifen mit 4 Vertrauens-Punkten
-4. **Über mich** — persönliches Foto + Text + Qualifikationen
-5. **Produkte** — Tabs: Aloe Vera / Nahrungsergänzung / Beauty / Body Mission
-6. **Quiz** — Bedarfs-Quiz für persönliche Empfehlungen  
-7. **Beratung buchen** — WhatsApp + Kalender CTA
-8. **Bewertungen** — Kundenstimmen
-9. **FAQ** — häufige Fragen
-10. **Footer** — Links, Impressum, Datenschutz
-
----
-
-## Regeln für Änderungen
-
-1. **Kein Framework einführen** — bleibt als statisches HTML/CSS/JS
-2. **Keine externen Dependencies** hinzufügen außer Google Fonts (bereits eingebunden)
-3. **CSS-Variablen** immer aus `:root` nutzen, keine Hardcoded-Farben
-4. **Responsive:** jede Änderung auch für mobile (768px) testen
-5. **Keine Heilversprechen** in Texten — juristische Vorsicht bei Produktbeschreibungen
-6. **WhatsApp-Link** Format: `https://wa.me/49XXXXXXXXX` (Nummer einsetzen)
-7. **Bilder** immer mit `loading="lazy"` außer Hero-Bild
-8. **Performance:** Bilder vor dem Deployment optimieren (max 200KB pro Bild)
+### Wichtige CSS-Klassen
+- .fi = Fade-In Element (per JS animiert)
+- .sec = Standard Sektion (padding: 88px 24px)
+- .sec-bg = Sand-Hintergrund
+- .container = max-width: 1100px
+- .lpage = Overlay-Seite (Impressum, Datenschutz, Artikelsuche)
+- .pcard = Premium Card mit Hover-Effekt
 
 ---
 
 ## Deployment
-
-**Workflow:**
-1. Änderung in `index.html` machen
-2. `git add . && git commit -m "beschreibung"` 
-3. `git push` → GitHub Pages deployed automatisch
-4. Hostinger-Domain zeigt auf GitHub Pages (CNAME bereits eingerichtet)
-
-**GitHub Repo:** (URL hier eintragen nach Setup)  
-**Live URL:** (Domain hier eintragen)
+  git add .
+  git commit -m "Beschreibung"
+  git push origin main
+GitHub Pages baut automatisch. Live in ~2 Minuten.
 
 ---
 
-## Offene To-Dos
-
-- [ ] WhatsApp-Nummer eintragen (alle `wa.me/` Links)
-- [ ] Echte Fotos von Giuseppina einbinden (statt Placeholder)
-- [ ] Impressum & Datenschutz Seite erstellen (rechtlich notwendig!)
-- [ ] GitHub Repo erstellen und GitHub Pages aktivieren
-- [ ] Hostinger-Domain auf GitHub Pages zeigen lassen
-- [ ] Google Analytics / Meta Pixel einbinden (optional)
-- [ ] Echte Kundenbewertungen eintragen
+## Wichtige Features
+1. Artikelsuche – Kunden können LR Artikelnummern nachschlagen (Footer)
+2. Quiz – Produktempfehlungs-Quiz (7 Schritte)
+3. Impressum/Datenschutz – Als Overlay eingebettet (lpage)
+4. WhatsApp CTA – Überall verlinkt (+4915231717671)
 
 ---
 
-## Wichtige Hinweise
-
-- **Impressum ist Pflicht** in Deutschland — ohne geht die Seite nicht live
-- **Datenschutzerklärung** ist Pflicht (DSGVO) — besonders wenn Formulare genutzt werden
-- **LR Health & Beauty** ist ein MLM-Unternehmen — keine irreführenden Einkommensversprechen auf der Seite
+## Regeln
+- IMMER mobile-first testen (375px)
+- Bilder IMMER komprimieren vor Git (sips -Z 1200, JPEG 85%)
+- Keine externen Libraries – alles vanilla HTML/CSS/JS
+- Impressum/Datenschutz NICHT auslagern (GitHub Pages Cache-Probleme)
