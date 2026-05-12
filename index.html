@@ -718,6 +718,42 @@
     .pbody{padding:22px 18px}
     .kontakt-layout{gap:28px}
   }
+
+  /* Mobile hero polish: most traffic lands here */
+  @media(max-width:600px){
+    .hdr{position:sticky}
+    .nav{height:76px}
+    .container{padding:0 18px}
+    .logo{font-size:1.28rem;line-height:1}
+    .logo small{font-size:.56rem;letter-spacing:.22em;margin-top:4px}
+    .nav-quiz{display:inline-flex;padding:10px 16px;font-size:.82rem;border-color:rgba(201,137,106,.34)}
+    .hbg span{width:22px;height:2.5px}
+    .mob{inset:76px 0 0 0}
+    .hero{display:flex;flex-direction:column;padding-top:0;background:#fbf6ef}
+    .hero-img{order:0;height:315px;min-height:0;overflow:hidden}
+    .hero-img img{object-position:center 36%;transform:none !important}
+    .hero-img::after{background:linear-gradient(180deg,rgba(251,246,239,0) 58%,rgba(251,246,239,.68) 100%)}
+    .hero-note{left:16px;right:16px;bottom:14px;position:absolute;margin:0;padding:13px 15px;background:rgba(251,246,239,.9);box-shadow:0 14px 34px rgba(32,26,22,.14)}
+    .hero-note span{font-size:.58rem;letter-spacing:.2em;margin-bottom:5px}
+    .hero-note p{font-size:1.06rem;line-height:1.08}
+    .hero-c{order:1;padding:34px 18px 42px}
+    .badge{width:100%;justify-content:flex-start;margin-bottom:22px;padding:8px 14px;font-size:.68rem;letter-spacing:.08em}
+    .hero-intro{margin:0 0 16px}
+    .hero-intro .label{font-size:.62rem;letter-spacing:.22em}
+    .hero h1{font-size:clamp(3.05rem,14vw,4rem);line-height:.94;margin:0 0 18px;letter-spacing:0}
+    .hero-lead{font-size:.98rem;line-height:1.78;margin-bottom:22px;max-width:100%}
+    .hero-care{grid-template-columns:1fr;gap:1px;margin:0 0 22px}
+    .hero-care div{padding:13px 14px}
+    .hero-care span{font-size:1rem;margin-bottom:5px}
+    .hero-care strong{font-size:.82rem}
+    .hero-care p{font-size:.78rem}
+    .btng{gap:10px;margin-bottom:22px}
+    .btng .btn{min-height:52px;padding:14px 18px}
+    .trust-row{grid-template-columns:1fr;gap:8px;margin-top:0;padding-top:18px}
+    .ti{padding:12px 14px;border-radius:10px}
+    .tnum{font-size:1.08rem}
+    .tlbl{font-size:.62rem;letter-spacing:.11em}
+  }
 </style>
 </head>
 <body>
