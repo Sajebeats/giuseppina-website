@@ -778,6 +778,24 @@
     .contact-instagram svg { width: 2.25rem; height: 2.25rem; padding: .45rem; border-radius: 50%; background: linear-gradient(135deg, #f09433, #dc2743 55%, #bc1888); color: #fff; flex: 0 0 auto; }
     .contact-instagram span { display: flex; flex-direction: column; font-weight: 700; font-size: .95rem; line-height: 1.2; }
     .contact-instagram small { font-weight: 400; font-size: .72rem; opacity: .75; }
+    .button-shop { border-color: rgba(31,40,34,.14); background: rgba(255,253,248,.85); color: var(--ink); backdrop-filter: blur(8px); }
+    .button-shop:hover { border-color: var(--terracotta-dark); background: var(--paper); color: var(--terracotta-dark); }
+    .shop-icon { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; }
+    .nav-shop span { font-size: .8em; }
+    .header-shop { display: none; }
+    @media (max-width: 980px) {
+      .header-shop { display: inline-flex; align-items: center; gap: .4rem; margin-left: auto; margin-right: .6rem; padding: 0 .95rem; height: 2.75rem; border: 1px solid rgba(31,40,34,.14); border-radius: 99px; background: var(--paper); color: var(--ink); font-size: .82rem; font-weight: 700; text-decoration: none; }
+      .header-shop svg { width: 1.15rem; height: 1.15rem; }
+      body.menu-open .header-shop { visibility: hidden; }
+      .nav { gap: .6rem; }
+      .header-shop { margin-right: 0; }
+      .brand { min-width: 0; }
+      .brand-name { white-space: nowrap; }
+    }
+    @media (max-width: 440px) {
+      .header-shop { width: 2.75rem; padding: 0; justify-content: center; }
+      .header-shop span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    }
     .patch-tech { display: grid; grid-template-columns: .85fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; margin-top: clamp(5rem, 8vw, 7rem); }
     .patch-tech-media { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1.6rem; box-shadow: 0 2rem 5rem rgba(31,40,34,.16); }
     .patch-tech-media img { width: 100%; height: 100%; object-fit: cover; }
@@ -907,6 +925,7 @@
         <span class="brand-name">Giuseppina Mezzelani</span>
         <span class="brand-role">Persönliche LR-Partnerin</span>
       </a>
+      <a class="header-shop" href="https://shop.lrworld.com/home?PHP=GdEk%2B0218Gjyv91WMUw1Ag%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Zum offiziellen LR-Shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><span>Shop</span></a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Menü öffnen"><span></span></button>
       <ul class="nav-links" id="main-navigation">
         <li><a href="#neu" class="nav-new">Neu<span class="nav-new-dot" aria-hidden="true"></span></a></li>
@@ -915,6 +934,7 @@
         <li><a href="#beratung">So begleite ich dich</a></li>
         <li><a href="#ueber-mich">Über mich</a></li>
         <li><a href="#fragen">Fragen</a></li>
+        <li><a class="nav-shop" href="https://shop.lrworld.com/home?PHP=GdEk%2B0218Gjyv91WMUw1Ag%3D%3D" target="_blank" rel="noopener noreferrer">LR-Shop <span aria-hidden="true">↗</span></a></li>
         <li><a class="button button-primary" href="#" data-wa data-message="Hallo Giuseppina, ich wünsche mir eine persönliche Beratung.">WhatsApp</a></li>
       </ul>
     </div>
@@ -933,6 +953,7 @@
               Persönlich beraten lassen
             </a>
             <a class="button button-secondary" href="#themen">Themen entdecken</a>
+            <a class="button button-shop" href="https://shop.lrworld.com/home?PHP=GdEk%2B0218Gjyv91WMUw1Ag%3D%3D" target="_blank" rel="noopener noreferrer"><svg class="shop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>Direkt zum LR-Shop <span aria-hidden="true">↗</span></a>
           </div>
           <p class="hero-note">Kostenlos & unverbindlich · Direkter Kontakt mit mir</p>
         </div>
